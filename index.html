@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe · 2 Players</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader-container">
+            <div class="loader-ring">
+                <div class="loader-symbol loader-x">X</div>
+                <div class="loader-symbol loader-o">O</div>
+                <div class="loader-ring-track"></div>
+                <div class="loader-ring-progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader-text">Loading Game</div>
+            <div class="loader-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+        <div class="loader-particles" id="loaderParticles"></div>
+    </div>
+
+    <!-- ===== GAME CONTAINER ===== -->
+    <div class="game-wrapper" id="gameWrapper">
+        <div class="game-container">
+
+            <!-- HEADER -->
+            <div class="header">
+                <div class="title-group">
+                    <span class="title">✧ Tic Tac Toe</span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🎨</span>
+                        <span class="theme-label" id="themeLabel">Dark</span>
+                    </button>
+                </div>
+                <div class="turn-badge" id="turnBadge">
+                    <span>Turn</span>
+                    <span class="player-indicator x-turn" id="turnIndicator">X</span>
+                </div>
+            </div>
+
+            <!-- SCOREBOARD -->
+            <div class="scoreboard">
+                <div class="score-item x-score">
+                    <span class="score-label">X</span>
+                    <span class="score-value" id="scoreX">0</span>
+                </div>
+                <div class="score-item draw-score">
+                    <span class="score-label">Draw</span>
+                    <span class="score-value" id="scoreDraw">0</span>
+                </div>
+                <div class="score-item o-score">
+                    <span class="score-label">O</span>
+                    <span class="score-value" id="scoreO">0</span>
+                </div>
+            </div>
+
+            <!-- BOARD -->
+            <div class="board" id="board" role="grid" aria-label="Game board">
+                <!--  cells generated -->
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="message" id="message">Player X's turn</div>
+
+            <!-- ACTIONS -->
+            <div class="actions">
+                <button class="btn btn-primary" id="resetBtn">⟳ New Game</button>
+                <button class="btn btn-secondary" id="resetScoreBtn">↺ Reset Scores</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
