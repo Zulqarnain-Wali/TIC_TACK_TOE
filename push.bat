@@ -1,16 +1,22 @@
 @echo off
-title One-Click Push
-echo =============================================
-echo  Pushing to TIC_TACK_TOE
-echo  Repo: https://github.com/Zulqarnain-Wali/TIC_TACK_TOE.git
-echo =============================================
+title One-Click Push to main
+setlocal enabledelayedexpansion
+
+:: ---- EDIT THIS IF YOUR REPO CHANGES ----
+set REPO_URL=https://github.com/Zulqarnain-Wali/TIC_TACK_TOE.git
+:: ----------------------------------------
+
+echo ============================================================
+echo  Pushing to TIC_TACK_TOE (main branch)
+echo  Repo: %REPO_URL%
+echo ============================================================
 echo.
 
 :: 1. If no .git folder, init and add remote
 if not exist ".git" (
     echo [SETUP] Initializing Git repo...
     git init
-    git remote add origin https://github.com/Zulqarnain-Wali/TIC_TACK_TOE.git
+    git remote add origin %REPO_URL%
     echo [SETUP] Remote added.
 )
 
@@ -38,18 +44,14 @@ if "%msg%"=="" (
 echo [COMMIT] Committing...
 git commit -m "%msg%"
 
-:: 6. ALWAYS push to MAIN (hardcoded)
-set branch=main
+:: 6. Push current branch (whatever it's named) to remote 'main'
+echo [PUSH] Pushing to origin/main (using HEAD:main)...
+git push -u origin HEAD:main
 
-
-:: 7. Push (first time uses -u)
-echo [PUSH] Pushing to origin/%branch% ...
-git push origin %branch% 2>nul
 if errorlevel 1 (
-    echo [PUSH] First push? Setting upstream...
-    git push -u origin %branch%
+    echo [ERROR] Push failed. Check your internet or credentials.
+) else (
+    echo [SUCCESS] Push completed! Your local branch is now tracking origin/main.
 )
 
-echo.
-echo [DONE] All done!
 pause
